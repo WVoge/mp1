@@ -11,7 +11,7 @@ Git is an essential part of this class and we will be using it heavily for all t
 All development and project submissions are done in the team-XX repo. When new projects come out, they will be in the [project-release](https://github.com/cornell-cs4410/project-release) repo. You are expected to merge them into your team-XX repo yourselves by runninging the following in your repo:
 
     git checkout master
-    git remote add upstream https://github.com/cornell-cs4411/project-release.git
+    git remote add upstream https://github.com/cornell-cs4410/project-release.git
     git fetch upstream
     git checkout -b upstream upstream/master
     git checkout upstream
