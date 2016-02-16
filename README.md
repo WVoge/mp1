@@ -5,7 +5,7 @@ This is your CS4410 project repository. You will use this repository to develop 
 ## Git
 Git is an essential part of this class and we will be using it heavily for all the assignments. If you are not already familiar with Git, we highly suggest trying some [tutorials](https://try.github.io). You will need to install Git on your machine by using either the [Github Desktop](https://desktop.github.com/) app or one of the binaries from [here](https://git-scm.com/downloads).
 
-All development and project submissions are done in the team-XX repo. When new projects come out, they will be in the [project-release](https://github.com/cornell-cs4410/project-release) repo. You are expected to merge them into your team-XX repo yourselves by runninging the following in your repo:
+All development and project submissions are done in the repo with your NetID. When new projects come out, they will be in the [project-release](https://github.com/cornell-cs4410/project-release) repo. You are expected to merge them into your own repo yourselves by runninging the following in your repo:
 
     git checkout master
     git remote add upstream https://github.com/cornell-cs4410/project-release.git
