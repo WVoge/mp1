@@ -31,7 +31,7 @@ To get started, run the following:
 
     # At this point, you are inside the VM and can compile and test your code which
     # is available in your home directory.
-    <vm>$ cd ~/mp1
+    <vm>$ cd ~/mp
     <vm>$ <run your code>
     <vm>$ exit
 
