@@ -3,7 +3,7 @@
 
 Vagrant.configure(2) do |config|
   config.vm.box = "ubuntu/trusty64"
-  config.vm.synced_folder "./src", "/home/vagrant/src"
+  config.vm.synced_folder "./mp", "/home/vagrant/mp"
 
   config.vm.provider "virtualbox" do |vb|
     vb.memory = "512"
