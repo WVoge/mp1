@@ -1,9 +1,6 @@
 CS4410
 ======
-This is your CS4410 project repository. You will use this repository to develop your code and submit assignments. The contents of the folders in your repository are described below:
-
-    src/mp1 # contains all of the MP1 source code
-    docs/   # contains each of the project writeups
+This is your CS4410 project repository. You will use this repository to develop your code and submit assignments.
 
 ## Git
 Git is an essential part of this class and we will be using it heavily for all the assignments. If you are not already familiar with Git, we highly suggest trying some [tutorials](https://try.github.io). You will need to install Git on your machine by using either the [Github Desktop](https://desktop.github.com/) app or one of the binaries from [here](https://git-scm.com/downloads).
