@@ -11,5 +11,5 @@ class SemaphoreExample(MP):
 	def update(self, newValue):
 		self.valueLock.procure()
 		self.value = newValue
-		self.valueLock.release()
+		self.valueLock.vacate()
 
