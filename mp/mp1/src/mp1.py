@@ -68,7 +68,7 @@ class MPcondition:
 
     def broadcast(self):
         if self.parent.mp.debug:
-            print "thread", threading.current_thread().name, "broadcasting", self.lock.name, "/", self.name
+            print "thread", threading.current_thread().name, "broadcasting", self.parent.name, "/", self.name
         self.cond.notifyAll()
 
 class MPlock:
