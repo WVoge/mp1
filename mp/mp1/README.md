@@ -29,7 +29,7 @@ Commandments
 All of your answers should follow the
 [commandments of synchronization][commandments].
 
-[commandments]: http://www.cs.cornell.edu/courses/cs4410/papers/commandments.pdf
+[commandments]: http://www.cs.cornell.edu/courses/cs4410/2012fa/papers/commandments.pdf
 
 They should also guarantee safety, and make progress whenever it is possible to
 do so.
