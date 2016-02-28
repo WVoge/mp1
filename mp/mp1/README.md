@@ -15,7 +15,7 @@ please modify the corresponding qXX.py file to contain the required answers and
 solutions.
 
 When a textual answer is called for, write your answer as a comment, with the
-exception of question 3.  Submit your answers to question 11 in the file
+exception of question 3.  Submit your answers to question 3 in the file
 [src/q03-written.pdf](src/q03-written.pdf).
  
 When a coding answer is called for, modify the skeletal code we have provided
