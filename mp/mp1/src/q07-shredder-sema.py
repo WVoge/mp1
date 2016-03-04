@@ -26,6 +26,9 @@ class ShredderScheduler(MP):
 
     def __init__(self, num_jobs):
         MP.__init__(self)
+        self.count = self.Shared("Count",0)
+        self.isdone = self.Shared("Count",0)
+        self.lock = self.Semaphore("Shredder lock",1)
         # TODO
         pass
 
@@ -33,6 +36,18 @@ class ShredderScheduler(MP):
         """Indicate that the currently running shredder thread is ready to
         shred. This function should return when a piece of paper has been
         put into this shredder."""
+        self.lock.procure()
+        self.count.write(self.count.read()+1)
+        if self.count.read()>=2: 
+            self.count.write(0)
+            self.isdone.write(1)
+            self.lock.vacate()
+            return
+        elif self.isdone.read():
+            self.isdone.write(0)
+            self.lock.vacate()
+            return
+        self.lock.vacate()
         # TODO
         pass
 
@@ -40,7 +55,18 @@ class ShredderScheduler(MP):
         """Indicate that the student wants to shred a piece of paper. Immediately 
         raises an exception if the ShredderScheduler is full; otherwise waits 
         until a shredder has been assigned to this job and then returns."""
-        # TODO
+        self.lock.procure()
+        self.count.write(self.count.read()+1)
+        if self.count.read()>=2: 
+            self.count.write(0)
+            self.isdone.write(1)
+            self.lock.vacate()
+            return
+        elif self.isdone.read():
+            self.isdone.write(0)
+            self.lock.vacate()
+            return
+        self.lock.vacate()
         pass
 
 ################################################################################

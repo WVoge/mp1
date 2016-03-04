@@ -26,7 +26,10 @@ class ShredderScheduler(MP):
 
     def __init__(self, num_jobs):
         MP.__init__(self)
-        # TODO
+        self.lock = self.Lock("Monitor Lock")
+        self.sr = self.lock.Condition("shredder ready")
+        self.pr = self.lock.Condition("paper ready")
+        self.counter = self.Shared("COunter",0)
         pass
 
     def shredder_ready(self):
@@ -34,6 +37,13 @@ class ShredderScheduler(MP):
         shred. This function should return when a piece of paper has been
         put into this shredder."""
         # TODO
+        with self.lock:
+            self.sr.signal()
+            self.counter.write(self.counter.read()+1)
+            self.pr.wait()
+            self.counter.write(self.counter.read()-1)
+            #print self.counter.read()
+            return				
         pass
 
     def add_paper(self):
@@ -41,6 +51,15 @@ class ShredderScheduler(MP):
         raises an exception if the ShredderScheduler is full; otherwise waits 
         until a shredder has been assigned to this job and then returns."""
         # TODO
+        with self.lock:
+            #print `self.counter.read()`+`num_jobs`
+            #if self.counter.read()<=num_jobs:
+            self.pr.signal()
+            #else: 
+                
+            #    raise Exception("Num Jobs Exceeded")
+            self.sr.wait()
+            return
         pass
 
 ################################################################################

@@ -5,9 +5,13 @@ import random
 # a. Complete the implementation of the MultiPurposePipe monitor below using
 #    MPsema. Your implementation should be able to make progress if there are 
 #    liquids that can flow
-
+#
 # b. What fairness properties does your implementation have?  Under what
 #    conditions (if any) can a thread starve?
+#
+#    This implementation exhibits weak and strong fairness, but not absolute
+#    One condition that a pipe could starve another is if it takes ownership
+#	 of the pipe lock, then never calls finish(), therefore never vacating the lock
 #
 
 ################################################################################
@@ -31,16 +35,17 @@ class MultiPurposePipe(MP):
 
     def __init__(self):
         MP.__init__(self)
-        # TODO
+        self.pipe = self.Shared("Pipe",0)
+        self.pipeLock = self.Semaphore("Pipe Lock",1)
 
     def flow(self, direction):
         """wait for permission to flow through the pipe. direction should be
         either 0 or 1."""
-        # TODO
+        self.pipeLock.procure()
         pass
 
     def finished(self,direction):
-        # TODO
+        self.pipeLock.vacate()
         pass
 
 ################################################################################
