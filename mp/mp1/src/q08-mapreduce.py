@@ -23,11 +23,14 @@ class Controller(MP):
 
     def __init__(self, num_workers):
         MP.__init__(self)
+        self.lock = self.Lock("Monitor lock")
+        self.done = self.lock.Condition("is done")
 
     def start_next_phase(self):
         """Called by a thread to indicate that it has completed the current
         phase.  Function blocks until all threads have completed the current
         phase."""
+        self.done.broadcast()
         pass
 
 ################################################################################

@@ -12,7 +12,15 @@ from mp1 import MP, MPthread
 #    implementation is not properly synchronized.  When both threads terminate,
 #    what are the largest and smallest possible scores?
 #
+#    The largest possible score is 10000, if the red team's process completely 
+#    starves out the blue team's. In this case the blue process never runs. 
+#    In the exact opposite case, the minimum score is -10000, when the blue 
+#    team's process starves out the red team's.
+#
+#
 # b. What other values can the score have when both threads have terminated?
+#
+#    The value of the score can be anywhere in between -10000 and 10000.
 #
 # c. Add appropriate synchronization such that updates to the counter
 #    occur in a critical section, ensuring that the energy level is
@@ -27,13 +35,19 @@ from mp1 import MP, MPthread
 class Contest(MP):
     def __init__(self):
         MP.__init__(self)
+		#A
         self.counter = self.Shared("counter", 0)
-
+        self.counterLock = self.Semaphore("counter lock", 1)
+		
     def pushRed(self):
+        self.counterLock.procure()
         self.counter.inc()
+        self.counterLock.vacate()
 
     def pushBlue(self):
+        self.counterLock.procure()
         self.counter.dec()
+        self.counterLock.vacate()
 
 class RedTeam(MPthread):
     def __init__(self, contest):
